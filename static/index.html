@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZapatoFlex | E-Commerce Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Animaciones de Fondo -->
+    <div class="background-elements">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+    </div>
+
+    <!-- PANTALLA DE INICIO DE SESIÓN -->
+    <div id="login-screen" class="screen-container">
+        <div class="glass-login">
+            <h1 class="logo text-center" style="font-size: 2.5rem; margin-bottom: 2rem;">🚀 <span>ZapatoFlex</span></h1>
+            <h2 class="text-center" style="margin-bottom: 1rem;">Iniciar Sesión</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label>Correo Electrónico:</label>
+                    <input type="email" id="email" class="modern-input" value="cliente@zapatoflex.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Contraseña:</label>
+                    <input type="password" id="password" class="modern-input" value="123456" required>
+                </div>
+                <button type="submit" class="cyber-btn w-full mt-4">Ingresar a la Tienda</button>
+            </form>
+            <p class="text-center mt-4" style="color: var(--text-secondary); font-size: 0.8rem;">Modo Simulación:
+                Credenciales pre-cargadas para la prueba.</p>
+        </div>
+    </div>
+
+    <!-- PANTALLA PRINCIPAL DE LA APP -->
+    <div id="app-screen" class="screen-container hidden">
+        <nav class="glass-nav">
+            <div class="logo">🚀 <span>ZapatoFlex</span></div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="fetchCatalog()">Todos</a></li>
+                <li><a href="#" onclick="fetchCatalog('Deportivos')">Deportivos</a></li>
+                <li><a href="#" onclick="fetchCatalog('Formales')">Formales</a></li>
+                <li><a href="#" onclick="fetchCatalog('Casuales')">Casuales</a></li>
+            </ul>
+            <div class="user-actions">
+                <span id="user-display" class="neon-text font-bold" style="margin-right: 1.5rem;"></span>
+                <button onclick="toggleCart()" class="cart-btn">
+                    🛒 Carrito <span id="cart-count" class="badge">0</span>
+                </button>
+            </div>
+        </nav>
+
+        <main class="container">
+            <header class="hero-section text-center">
+                <h1>Colección <span class="neon-text">Exclusiva</span></h1>
+                <p>Navega nuestro catálogo y añade productos a tu carrito de compras.</p>
+            </header>
+
+            <section id="catalog-grid" class="grid">
+                <!-- Productos inyectados desde la BD -->
+            </section>
+        </main>
+    </div>
+
+    <!-- PANEL LATERAL DEL CARRITO DE COMPRAS -->
+    <div id="cart-sidebar" class="glass-sidebar hidden">
+        <div class="cart-header">
+            <h2>Tu Carrito de Compras</h2>
+            <button onclick="toggleCart()" class="modern-btn-secondary">Cerrar ❌</button>
+        </div>
+        <div id="cart-items" class="cart-items">
+            <!-- Productos del carrito -->
+        </div>
+        <div class="cart-footer">
+            <h3>Total: <span id="cart-total" class="neon-text">$0</span></h3>
+
+            <div class="form-group mt-4">
+                <label>Seleccionar Método de Pago (Strategy Pattern):</label>
+                <select id="payment-method" class="modern-select">
+                    <option value="contraentrega">Estrategia 1: Pago Contraentrega en casa</option>
+                    <option value="tarjeta">Estrategia 2: Pasarela de Tarjeta (Stripe/PayU)</option>
+                </select>
+            </div>
+
+            <button onclick="processCheckout()" class="cyber-btn w-full mt-4" id="checkout-btn" disabled>💵 Pagar Orden
+                Completa</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>
